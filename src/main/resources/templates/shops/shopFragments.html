@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="form-group" th:fragment="strecke">
+
+    <label>Strecke eingeben</label>
+
+    <ul class="list-group list-inline">
+        <li  class="list-group-item bahnhofOption" th:each="Bahnhof : ${bahnhofs}" th:text="${Bahnhof.name}"></li>
+    </ul>
+
+    <h3>From</h3>
+    <input class="bahnhofInput" id="from" disabled/>
+    <h3>To</h3>
+    <input class="bahnhofInput" id="to" disabled/>
+
+    <script>
+        $(".bahnhofInput").droppable({
+            accept: function(item) {
+                return true;
+            },
+            drop: function(event, ui) {
+                var $this = $(this);
+                ui.draggable.position({
+                    my: "center",
+                    at: "center",
+                    of: $this,
+                    using: function(pos) {
+                        $(this).animate(pos, 200, "linear");
+                    }
+                });
+
+                $(this).val(ui.draggable.text());
+                ui.draggable.hide();
+
+                for(i = 0;i < registered.length;++i){
+                    e = registered[i];
+                    if(e[0] == this) {
+                        e[1].removeAttr('style');
+                        registered.splice(i, 1);
+                    }
+                }
+                registered.push([this,ui.draggable]);
+
+
+                updateCalender();
+            }
+        });
+
+        var registered = [];
+
+        $(".bahnhofOption").draggable({revert: function(event, ui) {
+                // on older version of jQuery use "draggable"
+                // $(this).data("draggable")
+                // on 2.x versions of jQuery use "ui-draggable"
+                // $(this).data("ui-draggable")
+                $(this).data("uiDraggable").originalPosition = {
+                    top : 0,
+                    left : 0
+                };
+                // return boolean
+                return !event;
+                // that evaluate like this:
+                // return event !== false ? false : true;
+            }});
+
+        function getFrom(){
+            return $("#from").val();
+        }
+
+
+        function getTo(){
+            return $("#to").val();
+        }
+
+        $(function(){
+            var zugId = Cookies.get("interestID");
+
+            $.ajax({
+                url: "/zugs?from='"+getFrom()+"'&to='"+getTo()+"'",
+                context: document.body
+            }).done(function(data) {
+
+
+            });
+        });
+    </script>
+
+</div>
+
+
+<div class="form-group" th:fragment="calender" >
+
+    <div id="calender">
+
+    </div>
+
+    <div id="toStore">
+        <h2>Where do you want to go?</h2>
+        <h3 id="option"></h3>
+        <input type="button" value="Reservieren" onclick="forward('reservierung')">
+        <input type="button" value="Einzelticket" onclick="forward('einzelticket')">
+        <input type="button" value="Zeitkarte" onclick="forward('zeitkarte')">
+    </div>
+    <script>
+        var callEvent;
+
+        function forward(destination){
+            Cookies.set("interestID", callEvent.title.substr(callEvent.title.lastIndexOf(' ')));
+            window.location = "/shops/"+destination;
+        }
+
+        $("#toStore").dialog({
+            autoOpen: false,
+            show: 'slide',
+            resizable: false,
+            position: 'center',
+            stack: true,
+            height: 400,
+            width: 600,
+            modal: true
+        });
+        function updateCalender()
+        {
+            start = getFrom();
+            end = getTo();
+
+            if(start == "" || end == "")
+                return;
+
+            Date.prototype.addHours= function(h){
+                this.setHours(this.getHours()+h);
+                return this;
+            }
+
+            $.ajax({
+                url: "/zugs?from='"+getFrom()+"'&to='"+getTo()+"'",
+                context: document.body
+            }).done(function(data) {
+                eventlist = Array();
+
+                for(i = 0; i < data.length;++i)
+                    eventlist.push({
+                        title:data[i].start.name + " to "+data[i].ende.name+" "+(data[i].start.absKmEntfernung+data[i].ende.absKmEntfernung)/200+"h "+data[i].id,
+                        start:data[i].startZeit,
+                        allDay :false
+                    });
+                $('#calender').fullCalendar( "destroy" );
+
+                $('#calender').fullCalendar({
+                    events:eventlist,
+                    eventClick: function(calEvent, jsEvent, view) {
+
+                        callEvent = calEvent;
+                        $("#option").html(calEvent.title+"<br/>"+ new Date(calEvent.start).toString());
+                        $("#toStore").dialog('open');
+
+
+                    }
+                });
+            });
+
+
+
+        }
+    </script>
+
+</div>
+
+</body>
+</html>

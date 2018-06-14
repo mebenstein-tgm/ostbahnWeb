@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head">
+</head>
+<body>
+    <div th:replace="fragments :: header">
+
+    </div>
+
+    <h1>Suche</h1>
+
+    <form>
+        <div th:replace="shops/shopFragments :: strecke"></div>
+        <div th:replace="shops/shopFragments :: calender"></div>
+    </form>
+</body>
+</html>

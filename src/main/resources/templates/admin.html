@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head">
+</head>
+<body>
+
+<form class="form-inline" action="#" th:action="@{/admin}" th:object="${benutzer}" method="post" >
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Vorname</th>
+            <th scope="col">Nachname</th>
+            <th scope="col">Email</th>
+            <th scope="col">Passwort</th>
+            <th scope="col">SmsNummer</th>
+            <th scope="col">verbuchtePraemienMeilen</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="Benutzer : ${benutzers}">
+            <th scope="row" th:text="${Benutzer.ID}"></th>
+            <td th:text="${Benutzer.vorName}"></td>
+            <td th:text="${Benutzer.nachName}"></td>
+            <td th:text="${Benutzer.eMail}"></td>
+            <td th:text="${Benutzer.passwort}"></td>
+            <td th:text="${Benutzer.smsNummer}"></td>
+            <td th:text="${Benutzer.verbuchtePraemienMeilen}"></td>
+            <td><input class="form-control" type="button" value="change"></td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td><input class="form-control" type="text" value="" disabled></td>
+            <td><input class="form-control" type="text" th:field="*{vorName}" th:value="Vorname"/></td>
+            <td><input class="form-control" type="text" th:field="*{nachName}" th:value="Nachname"/></td>
+            <td><input class="form-control" type="email" th:field="*{eMail}" th:value="Email"/></td>
+            <td><input class="form-control" type="password" th:field="*{passwort}" th:value="Passwort"/></td>
+            <td><input class="form-control" type="tel" th:field="*{smsNummer}" th:value="SmsNummer"/></td>
+            <td><input class="form-control" type="number" th:field="*{verbuchtePraemienMeilen}" th:value="verbuchtePraemienMeilen"/></td>
+            <td><input class="form-control" type="submit" value="save"></td>
+        </tr>
+        </tfoot>
+    </table>
+
+
+</form>
+
+</body>
+</html>

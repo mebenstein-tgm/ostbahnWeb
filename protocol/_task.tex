@@ -1,0 +1,78 @@
+\section{Einführung}
+Diese Übung zeigt die Anwendung von komponentenbasierter Programmierung mittels Webframeworks.
+\subsection{Ziele}
+
+Das Ziel dieser Übung ist die Umsetzung einer View sowie die Implementierung von Business-Logic mittels eines Frameworks.
+\subsection{Voraussetzungen} 
+
+Grundlagen zu Java und das Anwenden neuer Application Programming Interfaces (APIs)
+Abgeschlossene Implementierung der Übung Distributed Computing DezSys-GK8.3 "Komponentenbasierte Programmierung"
+\subsection{Aufgabenstellung}
+
+Erstellen Sie für die persistierten Objekte des Modells eine grafische Oberfläche mit einem Webframework. Die funktionalen Anforderungen, die infolge beschrieben sind, sollen entsprechend abgebildet sein.
+
+\subsubsection{Suche}
+Die Suche nach Zügen muss auf jeden Fall die Auswahl des Abfahrts- und Ankunftsortes (nur folgende Bahnhöfe sind möglich: Wien Westbhf, Wien Hütteldorf, St. Pölten, Amstetten, Linz, Wels, Attnang-Puchheim, Salzburg) ermöglichen. Dies führt zur Anzeige der möglichen Abfahrten, die zur Vereinfachung an jedem Tag zur selben Zeit stattfinden. Des weiteren wird auch die Dauer der Fahrt angezeigt.
+
+In dieser Liste kann nun eine gewünschte Abfahrtszeit ausgewählt werden. Die Auswahl der Zeit führt zu einer automatischen Weiterleitung zum Ticketshop.
+
+Um sich die Auslastung der reservierten Sitzplätze anzusehen, muss bei dem Suchlisting noch das Datum ausgewählt werden. Dieses Service steht jedoch nur registrierten Benutzern zur Verfügung.
+
+
+\subsubsection{Ticketshop}
+Man kann Einzeltickets kaufen, Reservierungen für bestimmte Züge durchführen und Zeitkarten erwerben. Dabei sind folgende Angaben notwendig:
+
+Einzeltickets: Strecke (Abfahrt/Ankunft), Anzahl der Tickets, Optionen (Fahrrad, Großgepäck)
+Reservierung: Strecke (Abfahrt/Ankunft), Art der Reservierung (Sitzplatz, Fahrrad, Rollstuhlstellplatz), Reisetag und Zug (Datum/Uhrzeit)
+Zeitkarte: Strecke, Zeitraum (Wochen- und Monatskarte)
+
+Um einen Überblick zu erhalten, kann der Warenkorb beliebig befüllt und jederzeit angezeigt werden. Es sind keine Änderungen erlaubt, jedoch können einzelne Posten wieder gelöscht werden.
+
+Die Funktion „Zur Kassa gehen“ soll die Bezahlung und den Ausdruck der Tickets sowie die Zusendung per eMail/SMS ermöglichen. Dabei ist für die Bezahlung nur ein Schein-Service zu verwenden um zum Beispiel eine Kreditkarten- bzw. Maestrotransaktion zu simulieren.
+
+\subsubsection{Prämienmeilen}
+
+Benutzer können sich am System registrieren um getätigte Käufe und Reservierungen einzusehen. Diese führen nämlich zu Prämienmeilen, die weitere Vergünstigungen ermöglichen. Um diese beim nächsten Einkauf nützen zu können, muss sich der Benutzer einloggen und wird beim „Zur Kassa gehen“ gefragt, ob er die Prämienmeilen für diesen Kauf einlösen möchte.
+
+Instant Notification System der Warteliste
+Der Kunde soll über Änderungen bezüglich seiner Reservierung (Verspätung bzw. Stornierung) mittels ausgesuchtem Service (eMail bzw. SMS) benachrichtigt werden. Bei ausgelasteten Zügen soll auch die Möglichkeit einer Anfrage an reservierte Plätze möglich sein. Dabei kann ein Zuggast um einen Platz ansuchen, bei entsprechender Änderung einer schon getätigten Reservierung wird der ansuchende Kunde informiert und es wird automatisch seine Reservierung angenommen.
+
+\subsubsection{Sonderangebote}
+
+Für festzulegende Fahrtstrecken soll es ermöglicht werden, dass ein fixes Kontingent von Tickets (z.b.: 999) zu einem verbilligten Preis (z.b.: 50\% Reduktion) angeboten wird. Diese Angebote haben neben dem Kontingent auch eine zeitliche Beschränkung. Der Start wird mit Datum und Uhrzeit festgelegt. Die Dauer wird in Stunden angegeben. Diese Angebote werden automatisch durch Ablauf der Dauer beendet.\\
+
+Task 1 - View
+Schreiben Sie für alle oben definierten, funktionalen Anforderungen entsprechende User-Interfaces mittels eines Webframeworks.\\
+
+Task 2 - User Management
+Implementieren Sie für den Server ein einfaches Usermanagement um Benutzer anzulegen, zu ändern sowie sie wieder aus dem System zu entfernen. Am Server soll auch die Anzeige aller Benutzer und deren Details ermöglicht werden.\\
+
+Task 3 - Testing
+Überprüfen Sie die entsprechenden Anforderungen mittels GUI-Tests. Verwenden Sie dabei Selenium oder Nightwatch.\\
+
+Task 4 - Deployment
+Deployen Sie Ihre Lösung auf einer Cloud-Lösung, damit ein einfacher Zugriff von außen ermöglicht wird (z.B. Heroku).\\
+
+\subsection{Bewertung} 
+
+Gruppengrösse: 1 Person
+Anforderungen "überwiegend erfüllt"
+Dokumentation und Beschreibung der verwendeten Technologien
+Task 1
+Task 2
+Anforderungen "zur Gänze erfüllt"
+Task 3
+Task 4
+
+\clearpage
+
+\section{Abgabe}
+
+Es ist ein Protokoll (TGM-HIT/latex-protocol) sowie der Link zum Github-Repository (als Kommentar) hier abzugeben. Die Durchführung der Übung ist mittels regelmäßigen Commits zu dokumentieren. Zum Abgabegespräch ist das Protokoll ausgedruckt vorzulegen (doppelseitig, beidseitig - an langer Kante).
+
+\section{Quellen} 
+
+''Spring Boot"; Spring; online: http://projects.spring.io/spring-boot/\\
+"Examples of JoinFaces usage"; Marcelo Romulo Fernandes; online:\\ https://github.com/joinfaces/joinfaces/wiki/Examples-of-JoinFaces-usage\\
+"Nightwatch - Browser automated testing"; Nightwatch.js; online: http://nightwatchjs.org/\\
+"Heroku - Cloud Application Platform"; Heroku; online: https://www.heroku.com/

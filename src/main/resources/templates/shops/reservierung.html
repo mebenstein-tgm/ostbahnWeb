@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head">
+    <meta charset="UTF-8">
+    <title>Reservierung</title>
+</head>
+<body>
+    <div th:replace="fragments :: header">
+
+    </div>
+
+    <h1>Reservierung</h1>
+
+    <form>
+        <div th:replace="shops/shopFragments :: strecke"></div>
+        <select >
+            <option th:each="op : ${T(ostbahn.Entity.ReserungsOption).values()}" th:value="${op}" th:text="${op}"></option>
+        </select>
+
+    </form>
+</body>
+</html>
