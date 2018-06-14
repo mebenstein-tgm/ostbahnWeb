@@ -19,17 +19,17 @@
 	<div id="login-box">
 		<div class="left">
 			<h2>Registration Form</h2>
-			<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+			<label th:if="${#fields.hasErrors('nachName')}" th:errors="*{eMail}"
 				   class="validation-message"></label>
-			<input type="text" th:field="*{name}" placeholder="Name"
+			<input type="text" th:field="*{nachName}" placeholder="Name"
 				   class="form-control" />
-			<input type="text" th:field="*{email}" placeholder="Email"
+			<input type="text" th:field="*{eMail}" placeholder="Email"
 				   class="form-control" />
-			<label th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+			<label th:if="${#fields.hasErrors('eMail')}" th:errors="*{eMail}"
 				   class="validation-message"></label>
-			<input type="password" th:field="*{password}"
+			<input type="password" th:field="*{passwort}"
 				   placeholder="Password" class="form-control" />
-			<label th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+			<label th:if="${#fields.hasErrors('passwort')}" th:errors="*{passwort}"
 				   class="validation-message"></label>
 			<button type="submit" class="btn btn-primary btn-block">Register User</button>
 
