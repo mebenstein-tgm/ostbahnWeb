@@ -25,9 +25,7 @@ public class ZugService  {
         return repo.findAll().stream().filter(z -> ( z.getStart() == s.getStart() && z.getEnde() == s.getEnde())).collect(Collectors.toList());
     }
 
-    public Zug getByID(Long l){
-        return repo.findById(l).get();
-    }
+
 
     public List<Zug> getAll(){
         return repo.findAll();

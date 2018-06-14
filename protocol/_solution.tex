@@ -139,3 +139,44 @@ Damit die richtigen Attribute abgefragt werden müssen die Queries gesetz werden
 \end{code}
 
 Die Queries werden in HQL mit einem Parameter in application.properties festgelegt.
+
+\section{Deployment}
+
+Die Applikation wurde auf Heroku deployed.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/screenshot001}
+	\caption{Dashboard}
+	\label{fig:screenshot001}
+\end{figure}
+
+In der Applikationsübersicht kann über den ''New'' Button eine neue Applikation hinzugefügt werden.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/screenshot002}
+	\caption{Erstellen Dialog}
+	\label{fig:screenshot002}
+\end{figure}
+
+In dem Dialog muss der Name hinzugefügt werden. Dort kann auch die Server position gewählt werden, welche auf Europa gesetz wurde.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/screenshot004}
+	\caption{Github connection}
+	\label{fig:screenshot004}
+\end{figure}
+
+Um die Applikation zu deployen wird diese mit dem Github repository verbunden. Dafür wird das entsprechende Repository ausgewählt.\\
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/screenshot005}
+	\caption{Automatic Deployment}
+	\label{fig:screenshot005}
+\end{figure}
+
+Mit dieser Konfiguration kann eingestellt werden, dass bei jedem Push die Applikation neu deployed wird.
+

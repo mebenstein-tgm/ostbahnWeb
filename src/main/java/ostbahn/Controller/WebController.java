@@ -107,8 +107,4 @@ public class WebController {
         return zugRepo.getZugsForReservation(s);
     }
 
-    @GetMapping("/zug")
-    public Zug getZug(@RequestParam("id")String id){
-        return zugRepo.getByID(Long.parseLong(id));
-    }
 }

@@ -12,6 +12,6 @@ import ostbahn.Entity.Zug;
 public interface ZugRepository extends JpaRepository<Zug,Long> {
 
 
-    Zug findById(ID i);
+  
 
 }
